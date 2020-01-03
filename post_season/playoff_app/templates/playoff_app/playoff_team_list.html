@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="center_teams_list">
+  <h1>Playoff Teams List</h1>
+
+
+  {% if playoff_team_list %}
+
+  <table>
+    <tr>
+      <th>Division</th>
+      <th>Team</th>
+      <th>Seed</th>
+      <th>Next Game</th>
+    </tr>
+    {% for playoff_team in playoff_team_list %}
+    <tr>
+      <td>{{ playoff_team.division}}</td>
+      <td>{{ playoff_team.team }}</td>
+      <td>{{playoff_team.seed}}</td>
+      <td>{{playoff_team.next_game}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  {% else %}
+    <p>There are no teams in the library.</p>
+  {% endif %}
+
+</div>
+{% endblock %}

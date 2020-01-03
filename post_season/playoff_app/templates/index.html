@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Da Pool</h1>
+  <p>Welcome to the post season, and good luck!</p>
+  <h2>Your messages:</h2>
+  <p>The post season app has the following record counts:</p>
+  <ul>
+    <li><strong>Teams in Playoffs:</strong> {{ num_teams }}</li>
+    <li><strong>Total picks so far:</strong> {{ num_picks }}</li>
+  </ul>
+{% endblock %}

@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('playoff_app/', include('playoff_app.urls')),
     path('', RedirectView.as_view(url='playoff_app/', permanent=True)),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 
