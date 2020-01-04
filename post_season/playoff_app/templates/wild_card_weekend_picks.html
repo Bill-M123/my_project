@@ -8,23 +8,20 @@
 
 <table align="center" width=70%>
   <tr>
-    <th>Game</th>
-    <th>Home</th>
-    <th>Away</th>
-    <th>Spread</th>
-    <th>Favorite</th>
-    <th>Dog</th>
+    <td>Game</td>
+    <td>Home</td>
+    <td>Away</td>
+    <td>Dog</td>
+    <td>Spread</td>
   </tr>
 
   {% for game in games_dict %}
-  <tr>{{ game.fav_str}}</tr>
   <tr>
     <td>{{ game.game_num}}</td>
     <td>{{ game.home }}</td>
     <td>{{game.away}}</td>
+    <td>{{game.dog}}</td>
     <td>{{game.spread}}</td>
-    <td>{{game.favstr}}</td>
-    <td>{{game.dogstr}}</td>
   </tr>
   {% endfor %}
 

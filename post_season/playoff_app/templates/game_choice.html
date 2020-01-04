@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+
+  <form action="/game_choice_url/" method="post">
+    <table>
+      <tr><th>Visitor</th><th>Home</th><th>Spread</th><th>Choice</th></tr>
+      <tr>
+        <td>Buffalo</td>
+        <td>Houston</td>
+        <td>-3</td>
+        <td>
+        <label for="game_choice">Pick: </label>
+        <input id="game_choice" type="text" name="name_field" value="Default name for team.">
+        <td>
+      </tr>
+
+      <tr>
+            <td>Tennessee</td>
+            <td>New England</td>
+            <td>-3</td>
+            <td>
+            <label for="game_choice">Pick: </label>
+            <input id="game_choice" type="text" name="name_field" value="Default name for team.">
+            <td>
+      </tr>
+    </table>
+
+    <input type="submit" value="OK">
+  </form>
+
+
+
+</div>
+{% endblock %}

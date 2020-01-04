@@ -32,10 +32,10 @@ class Weekly_Pick(models.Model):
     week = models.CharField(max_length=3, choices=WEEKS)
     game_num = models.IntegerField()
 
-    TEAMS=(('BAL','Baltimore'),('KC','Kansas City'),('NE','New England'),
-    ('HOU','Houston'),('BUF','Buffalo'),('Ten','Tennessee'),
-    ('SF','San Francisco'),('GB','Green Bay'),('NO','New Orleans'),
-    ('Phi','Philadelphia'),('SEA','Seattle'),('Min','Minnesota'))
+    TEAMS=(('Baltimore','Baltimore'),('Kansas City','Kansas City'),('New England','New England'),
+    ('Houston','Houston'),('Buffalo','Buffalo'),('Tennessee','Tennessee'),
+    ('San Francisco','San Francisco'),('Green Bay','Green Bay'),('New Orleans','New Orleans'),
+    ('Philadelphia','Philadelphia'),('Seattle','Seattle'),('Minnesota','Minnesota'))
     home = models.CharField(max_length=20, choices=TEAMS)
     away = models.CharField(max_length=20, choices=TEAMS)
     spread = models.FloatField(null=True)
@@ -63,3 +63,32 @@ class Ladder_Pick(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.player_name
+
+class Game_Schedule(models.Model):
+
+    WEEKENDS = (('Wildcard','Wildcard'),('Division','Division'),('Conference','Conference'),('Superbowl','Superbowl'))
+    TEAMS=(('Baltimore','Baltimore'),('Kansas City','Kansas City'),('New England','New England'),
+    ('Houston','Houston'),('Buffalo','Buffalo'),('Tennessee','Tennessee'),
+    ('San Francisco','San Francisco'),('Green Bay','Green Bay'),('New Orleans','New Orleans'),
+    ('Philadelphia','Philadelphia'),('Seattle','Seattle'),('Minnesota','Minnesota'))
+
+    DIVISION=(('AFC','AFC'),('NFC','NFC'))
+
+    DAYS=(('Sat','Sat'),('Sun','Sun'))
+
+    weekend = models.CharField(max_length=20, choices=WEEKENDS)
+    game_num = models.IntegerField(default=0)
+    division = models.CharField(max_length=4, choices=DIVISION)
+    day = models.CharField(max_length=4, choices=DAYS)
+    home = models.CharField(max_length=20, choices=TEAMS)
+    away = models.CharField(max_length=20, choices=TEAMS)
+    dog =  models.CharField(max_length=20, choices=TEAMS)
+    spread = models.FloatField(null=True)
+
+    class Meta:
+        ordering = ('day','game_num', )
+
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return 'Game_'+str(self.game_num)+'_'+self.away+'_'+self.home+'_'+str(round(self.spread,1))

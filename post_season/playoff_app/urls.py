@@ -12,4 +12,5 @@ urlpatterns = [
     path('division/', views.Division, name='division'),
     path('conference/', views.Conference, name='conference'),
     path('superbowl/', views.Superbowl, name='superbowl'),
+    path('picks/', views.Picks, name='picks'),
 ]
