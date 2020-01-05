@@ -5,6 +5,9 @@
 <div id="content_container" class="page_defs">
 <h1 align="center">Wildcard Games</h1>
 
+{% for game in games_dict %}
+<p>game: {{game.favstr}}</p>
+{% endfor %}
 
 <table align="center" width=70%>
   <tr>
@@ -17,14 +20,14 @@
   </tr>
 
   {% for game in games_dict %}
-  <tr>{{ game.fav_str}}</tr>
+  <tr>{{ spread_str.favstr}}</tr>
   <tr>
     <td>{{ game.game_num}}</td>
     <td>{{ game.home }}</td>
     <td>{{game.away}}</td>
     <td>{{game.spread}}</td>
-    <td>{{game.favstr}}</td>
-    <td>{{game.dogstr}}</td>
+    <td>{{spread_str.favstr}}</td>
+    <td>{{spread_str.dogstr}}</td>
   </tr>
   {% endfor %}
 

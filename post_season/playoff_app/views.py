@@ -45,6 +45,7 @@ def WildCard(request):
     all_games = Game_Schedule.objects.all().filter(weekend='Wildcard')
 
     games_dict={}
+    spread_str={}
     for g in all_games:
 
         # Make choice strings
@@ -53,15 +54,17 @@ def WildCard(request):
         else:
             favorite=g.home
 
-        fav_str=favorite+'-'+str(g.spread)
-        dog_str=g.dog+'+'+str(g.spread)
+        fav_str=str(favorite+'-'+str(g.spread))
+        dog_str=str(g.dog+'+'+str(g.spread))
         print(fav_str,dog_str)
 
         games_dict[g]={'game_num':g.game_num,'home':g.home,'away':g.away,
         'spread':g.spread,'favstr':fav_str,'dogstr':dog_str}
-
-    print(games_dict)
-    context = {'games_dict': games_dict}
+        spread_str[g]={'favstr':fav_str,'dogstr':dog_str}
+        print(g.__str__(),spread_str[g])
+        print(games_dict[g]['favstr'],games_dict[g]['dogstr'])
+    context = {'games_dict': games_dict,
+    'spread_str':spread_str}
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'wild_card_weekend.html', context=context)
 
